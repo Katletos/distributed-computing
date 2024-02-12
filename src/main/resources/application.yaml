@@ -1,0 +1,20 @@
+spring:
+  h2:
+    console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  application:
+    name: 'DC'
+server:
+  port: 24110
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/v1/docs
+  swagger-ui:
+    path: /api/v1/ui-docs.html

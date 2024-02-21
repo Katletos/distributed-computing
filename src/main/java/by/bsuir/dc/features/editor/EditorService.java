@@ -49,6 +49,8 @@ public class EditorService {
 
         var editor = editorRepository.findById(editorId).orElseThrow(
                 () -> new EntityNotFoundException("Editor with such id is not exists"));
+
+        editorRepository.deleteById(editorId);
         return editorMapper.toDto(editor);
     }
 

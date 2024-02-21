@@ -38,4 +38,25 @@ public class NewsService {
                 () -> new EntityNotFoundException("News with such id does not exists"));
         return newsMapper.toDto(news);
     }
+
+    public NewsResponseDto updateNewsById(Long newsId, NewsRequestDto newsRequestDto) {
+        var doesExist = newsRepository.existsById(newsId);
+        if (doesExist) {
+            throw new EntityNotFoundException("News with such id does not exists");
+        }
+
+        var news = newsMapper.toEntity(newsRequestDto);
+        news.setId(newsId);
+        news = newsRepository.save(news);
+        return newsMapper.toDto(news);
+    }
+
+    public NewsResponseDto deleteNewsById(Long newsId) {
+        var news = newsRepository.findById(newsId).orElseThrow(
+                () -> new EntityNotFoundException("News with such id does not exists"));
+
+        newsRepository.deleteById(newsId);
+
+        return newsMapper.toDto(news);
+    }
 }

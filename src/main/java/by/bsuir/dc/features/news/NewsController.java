@@ -33,4 +33,17 @@ public class NewsController {
         var news = newsService.getById(newsId);
         return ResponseEntity.ok(news);
     }
+
+    @PutMapping("/{newsId}")
+    public ResponseEntity<NewsResponseDto> updateNewsById(@PathVariable Long newsId,
+                                                          @RequestBody NewsRequestDto newsRequestDto) {
+        var news = newsService.updateNewsById(newsId, newsRequestDto);
+        return ResponseEntity.ok(news);
+    }
+
+    @DeleteMapping("/{newsId}")
+    public ResponseEntity<NewsResponseDto> deleteNewsById(@PathVariable Long newsId) {
+        var news = newsService.deleteNewsById(newsId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(news);
+    }
 }

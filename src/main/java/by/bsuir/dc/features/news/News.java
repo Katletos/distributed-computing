@@ -1,8 +1,9 @@
-package by.bsuir.dc.news;
+package by.bsuir.dc.features.news;
 
-import by.bsuir.dc.editor.Editor;
-import by.bsuir.dc.post.Post;
+import by.bsuir.dc.features.editor.Editor;
+import by.bsuir.dc.features.post.Post;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.Instant;
@@ -20,9 +21,11 @@ public class News {
     private Long id;
 
     @Column(name = "title")
+    @Size(min = 2, max = 64)
     private String title;
 
     @Column(name = "content")
+    @Size(min = 4, max = 2048)
     private String content;
 
     @Column(name = "created")

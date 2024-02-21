@@ -1,7 +1,8 @@
-package by.bsuir.dc.post;
+package by.bsuir.dc.features.post;
 
-import by.bsuir.dc.news.News;
+import by.bsuir.dc.features.news.News;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -15,6 +16,7 @@ public class Post {
     private Long id;
 
     @Column(name = "content")
+    @Size(min = 2, max = 2048)
     private String content;
 
     @JoinColumn(name = "news_Id")

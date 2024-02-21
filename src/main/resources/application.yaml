@@ -6,8 +6,12 @@ spring:
     username: sa
     password: password
     driverClassName: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
   application:
     name: 'DC'
 server:

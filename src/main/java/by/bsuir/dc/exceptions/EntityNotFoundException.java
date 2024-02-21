@@ -1,4 +1,4 @@
-package by.bsuir.dc;
+package by.bsuir.dc.exceptions;
 
 public class EntityNotFoundException extends RuntimeException{
     public EntityNotFoundException(String errorMessage){

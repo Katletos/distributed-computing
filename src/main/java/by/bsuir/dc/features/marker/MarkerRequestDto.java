@@ -1,4 +1,4 @@
-package by.bsuir.dc.marker;
+package by.bsuir.dc.features.marker;
 
 import java.io.Serializable;
 

@@ -1,6 +1,5 @@
-package by.bsuir.dc.post;
+package by.bsuir.dc.features.post;
 
-import by.bsuir.dc.post.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostRepository extends JpaRepository<Post, Long> {

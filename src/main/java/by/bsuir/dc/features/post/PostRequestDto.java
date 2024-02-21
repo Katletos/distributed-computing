@@ -1,4 +1,4 @@
-package by.bsuir.dc.post;
+package by.bsuir.dc.features.post;
 
 import java.io.Serializable;
 

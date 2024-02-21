@@ -1,7 +1,6 @@
-package by.bsuir.dc.news;
+package by.bsuir.dc.features.news;
 
-import by.bsuir.dc.marker.Marker;
-import by.bsuir.dc.news.News;
+import by.bsuir.dc.features.marker.Marker;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name = "editor")
+@Table(name = "tbl_editor")
 public class Editor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

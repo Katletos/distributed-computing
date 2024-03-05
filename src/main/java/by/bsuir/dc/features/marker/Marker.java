@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Table(name = "marker")
+@Table(name = "tbl_marker")
 @Getter
 @Setter
 @RequiredArgsConstructor

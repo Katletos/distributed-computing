@@ -8,16 +8,24 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
    @ExceptionHandler({EntityAlreadyExistsException.class})
-   public ResponseEntity<Object> handleEntityAlreadyExistsException(EntityAlreadyExistsException exception) {
+   public ResponseEntity<ErrorMessage> handleEntityAlreadyExistsException(EntityAlreadyExistsException exception) {
+       var message = new ErrorMessage(
+               exception.getMessage(),
+               40000L
+               );
        return ResponseEntity
                .status(HttpStatus.BAD_REQUEST)
-               .body(exception.getMessage());
+               .body(message);
    }
 
    @ExceptionHandler({EntityNotFoundException.class})
-    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException exception) {
+    public ResponseEntity<ErrorMessage> handleEntityNotFoundException(EntityNotFoundException exception) {
+       var message = new ErrorMessage(
+               exception.getMessage(),
+               40400L
+       );
        return ResponseEntity
                .status(HttpStatus.NOT_FOUND)
-               .body(exception.getMessage());
+               .body(message);
    }
 }

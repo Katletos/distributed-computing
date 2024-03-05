@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name = "news_marker")
+@Table(name = "tbl_news_marker")
 public class NewsMarker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

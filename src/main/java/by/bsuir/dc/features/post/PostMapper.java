@@ -1,14 +1,16 @@
 package by.bsuir.dc.features.post;
 
+import by.bsuir.dc.features.post.dto.PostResponseDto;
+import by.bsuir.dc.features.post.dto.PostRequestDto;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PostMapper {
-    PostReponseDto toDto(Post post);
+    PostResponseDto toDto(Post post);
 
-    List<PostReponseDto> toDtoList(List<Post> posts);
+    List<PostResponseDto> toDtoList(List<Post> posts);
 
     Post toEntity(PostRequestDto postRequestDto);
 }

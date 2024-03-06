@@ -7,8 +7,9 @@ import java.io.Serializable;
 /**
  * DTO for {@link Editor}
  */
-public record EditorResponseDto(Long id,
-                                String login,
-                                String firstName,
-                                String lastName) implements Serializable {
-}
+public record EditorResponseDto(
+        Long id,
+        String login,
+        String firstName,
+        String lastName
+) implements Serializable {}

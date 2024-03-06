@@ -2,6 +2,8 @@ package by.bsuir.dc.features.post;
 
 import by.bsuir.dc.exceptions.EntityNotFoundException;
 import by.bsuir.dc.features.news.NewsRepository;
+import by.bsuir.dc.features.post.dto.PostResponseDto;
+import by.bsuir.dc.features.post.dto.PostRequestDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class PostService {
 
     private final PostMapper postMapper;
 
-    public PostReponseDto addPost(PostRequestDto postRequestDto) {
+    public PostResponseDto addPost(PostRequestDto postRequestDto) {
         boolean doesExist = newsRepository.existsById(postRequestDto.newsId());
         if (doesExist) {
             throw new EntityNotFoundException("News does not exist");
@@ -28,19 +30,19 @@ public class PostService {
         return postMapper.toDto(post);
     }
 
-    public List<PostReponseDto> getAll() {
+    public List<PostResponseDto> getAll() {
         var posts = postRepository.findAll();
         return postMapper.toDtoList(posts);
     }
 
-    public PostReponseDto getById(Long postId) {
+    public PostResponseDto getById(Long postId) {
         var post = postRepository.findById(postId).orElseThrow(
                 () -> new EntityNotFoundException("")
         );
         return postMapper.toDto(post);
     }
 
-    public PostReponseDto update(Long postId, PostRequestDto postRequestDto) {
+    public PostResponseDto update(Long postId, PostRequestDto postRequestDto) {
         var doesExist = postRepository.existsById(postId);
         if (doesExist) {
             throw new EntityNotFoundException("");

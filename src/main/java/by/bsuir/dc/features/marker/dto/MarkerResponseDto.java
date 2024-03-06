@@ -1,4 +1,6 @@
-package by.bsuir.dc.features.marker;
+package by.bsuir.dc.features.marker.dto;
+
+import by.bsuir.dc.features.marker.Marker;
 
 import java.io.Serializable;
 

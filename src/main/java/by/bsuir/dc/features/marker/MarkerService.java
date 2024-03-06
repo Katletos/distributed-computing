@@ -1,6 +1,8 @@
 package by.bsuir.dc.features.marker;
 
 import by.bsuir.dc.exceptions.EntityNotFoundException;
+import by.bsuir.dc.features.marker.dto.MarkerRequestDto;
+import by.bsuir.dc.features.marker.dto.MarkerResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

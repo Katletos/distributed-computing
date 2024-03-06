@@ -1,4 +1,6 @@
-package by.bsuir.dc.features.post;
+package by.bsuir.dc.features.post.dto;
+
+import by.bsuir.dc.features.post.Post;
 
 import java.io.Serializable;
 

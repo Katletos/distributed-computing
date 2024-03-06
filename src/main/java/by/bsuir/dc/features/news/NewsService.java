@@ -2,6 +2,7 @@ package by.bsuir.dc.features.news;
 
 
 import by.bsuir.dc.exceptions.EntityNotFoundException;
+import by.bsuir.dc.exceptions.ErrorMessages;
 import by.bsuir.dc.features.editor.EditorRepository;
 import by.bsuir.dc.features.news.dto.NewsRequestDto;
 import by.bsuir.dc.features.news.dto.NewsResponseDto;
@@ -25,7 +26,7 @@ public class NewsService {
     public NewsResponseDto createNews(@Valid NewsRequestDto newsRequestDto) {
        var doseExist = editorRepository.existsById(newsRequestDto.editorId());
        if (!doseExist){
-           throw new EntityNotFoundException("Editor does not exists");
+           throw new EntityNotFoundException(ErrorMessages.newsNotFound);
        }
 
        var news = newsMapper.toEntity(newsRequestDto);

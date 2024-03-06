@@ -1,6 +1,7 @@
 package by.bsuir.dc.features.marker;
 
 import by.bsuir.dc.exceptions.EntityNotFoundException;
+import by.bsuir.dc.exceptions.ErrorMessages;
 import by.bsuir.dc.features.marker.dto.MarkerRequestDto;
 import by.bsuir.dc.features.marker.dto.MarkerResponseDto;
 import jakarta.validation.Valid;
@@ -33,7 +34,7 @@ public class MarkerService {
 
     public MarkerResponseDto getById(@Min(1) @Max(Long.MAX_VALUE) Long markerId) {
         var marker = markerRepository.findById(markerId).orElseThrow(
-                () -> new EntityNotFoundException("")
+                () -> new EntityNotFoundException(ErrorMessages.markerNotFound)
         );
         return markerMapper.toDto(marker);
     }

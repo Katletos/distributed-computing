@@ -1,6 +1,7 @@
 package by.bsuir.dc.features.post;
 
 import by.bsuir.dc.exceptions.EntityNotFoundException;
+import by.bsuir.dc.exceptions.ErrorMessages;
 import by.bsuir.dc.features.news.NewsRepository;
 import by.bsuir.dc.features.post.dto.PostResponseDto;
 import by.bsuir.dc.features.post.dto.PostRequestDto;
@@ -26,7 +27,7 @@ public class PostService {
     public PostResponseDto addPost(@Valid PostRequestDto postRequestDto) {
         boolean doesExist = newsRepository.existsById(postRequestDto.newsId());
         if (doesExist) {
-            throw new EntityNotFoundException("News does not exist");
+            throw new EntityNotFoundException(ErrorMessages.postNotFound);
         }
 
         var post = postMapper.toEntity(postRequestDto);

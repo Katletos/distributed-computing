@@ -3,6 +3,7 @@ package by.bsuir.dc.features.editor;
 import by.bsuir.dc.exceptions.BusinessRuleException;
 import by.bsuir.dc.exceptions.EntityAlreadyExistsException;
 import by.bsuir.dc.exceptions.EntityNotFoundException;
+import by.bsuir.dc.exceptions.ErrorMessages;
 import by.bsuir.dc.features.editor.dto.CreateEditorDto;
 import by.bsuir.dc.features.editor.dto.EditorResponseDto;
 import by.bsuir.dc.features.news.NewsRepository;
@@ -30,7 +31,7 @@ public class EditorService {
 
     public EditorResponseDto getById(@Min(1) @Max(Long.MAX_VALUE) Long editorId) {
         var editor = editorRepository.findById(editorId)
-                .orElseThrow(() -> new EntityNotFoundException("Editor with such id not found"));
+                .orElseThrow(() -> new EntityNotFoundException(ErrorMessages.editorNotFound));
         return editorMapper.toDto(editor);
     }
 

@@ -2,7 +2,6 @@ package by.bsuir.dc.features.news.dto;
 
 import by.bsuir.dc.features.news.News;
 import jakarta.validation.constraints.*;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.time.Instant;

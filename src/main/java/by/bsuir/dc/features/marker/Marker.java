@@ -17,4 +17,9 @@ public class Marker {
     @Column(name = "name")
     @Size(min = 2, max = 32)
     private String name;
+
+    public Marker(Long l, String s) {
+        this.id = l;
+        this.name = s;
+    }
 }

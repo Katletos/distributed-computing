@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/news")
+@RequestMapping("api/v1.0/news")
 public class NewsController {
     private final NewsService newsService;
 

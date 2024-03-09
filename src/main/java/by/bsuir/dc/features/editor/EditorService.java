@@ -1,6 +1,5 @@
 package by.bsuir.dc.features.editor;
 
-import by.bsuir.dc.exceptions.BusinessRuleException;
 import by.bsuir.dc.exceptions.EntityAlreadyExistsException;
 import by.bsuir.dc.exceptions.EntityNotFoundException;
 import by.bsuir.dc.exceptions.ErrorMessages;
@@ -40,7 +39,7 @@ public class EditorService {
 
         var doesExist = editorRepository.existsByLogin(editor.getLogin());
         if (doesExist) {
-            throw new EntityAlreadyExistsException("Editor with such login already exist");
+            throw new EntityAlreadyExistsException(ErrorMessages.editorExists);
         }
 
         editorRepository.save(editor);
@@ -50,11 +49,11 @@ public class EditorService {
     public EditorResponseDto deleteById(@Min(1) @Max(Long.MAX_VALUE) Long editorId) {
         var doesNewsExists = newsRepository.existsByEditorId(editorId);
         if (doesNewsExists) {
-            throw new BusinessRuleException("Delete news before editor");
+            throw new EntityNotFoundException(ErrorMessages.newsNotFound);
         }
 
         var editor = editorRepository.findById(editorId).orElseThrow(
-                () -> new EntityNotFoundException("Editor with such id is not exists"));
+                () -> new EntityNotFoundException(ErrorMessages.editorNotFound));
 
         editorRepository.deleteById(editorId);
         return editorMapper.toDto(editor);
@@ -75,11 +74,11 @@ public class EditorService {
     public EditorResponseDto getByNewsId(@Min(1) @Max(Long.MAX_VALUE) Long newsId) {
         var doesExists = newsRepository.existsById(newsId);
         if (!doesExists){
-            throw new EntityNotFoundException("New with such id does not exists");
+            throw new EntityNotFoundException(ErrorMessages.newsNotFound);
         }
 
         var editor = editorRepository.findByNewsId(newsId).orElseThrow(
-                () -> new EntityNotFoundException("News does not have editor"));
+                () -> new EntityNotFoundException(ErrorMessages.editorNotFound));
 
         return editorMapper.toDto(editor);
     }

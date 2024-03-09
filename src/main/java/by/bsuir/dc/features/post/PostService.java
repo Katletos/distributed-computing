@@ -27,7 +27,7 @@ public class PostService {
     public PostResponseDto addPost(@Valid PostRequestDto postRequestDto) {
         boolean doesExist = newsRepository.existsById(postRequestDto.newsId());
         if (doesExist) {
-            throw new EntityNotFoundException(ErrorMessages.postNotFound);
+            throw new EntityNotFoundException(ErrorMessages.newsNotFound);
         }
 
         var post = postMapper.toEntity(postRequestDto);

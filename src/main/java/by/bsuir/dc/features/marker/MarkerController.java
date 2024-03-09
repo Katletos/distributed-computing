@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/markers")
+@RequestMapping("api/v1.0/markers")
 public class MarkerController {
     private final MarkerService markerService;
 

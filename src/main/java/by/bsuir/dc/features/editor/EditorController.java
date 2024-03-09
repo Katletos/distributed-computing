@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/editors")
+@RequestMapping("api/v1.0/editors")
 @RequiredArgsConstructor
 public class EditorController {
     private final EditorService editorService;

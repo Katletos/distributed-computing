@@ -1,5 +1,6 @@
 package by.bsuir.dc.features.marker;
 
+import by.bsuir.dc.exceptions.BusinessRuleException;
 import by.bsuir.dc.exceptions.EntityNotFoundException;
 import by.bsuir.dc.exceptions.ErrorMessages;
 import by.bsuir.dc.features.marker.dto.MarkerRequestDto;
@@ -22,6 +23,11 @@ public class MarkerService {
     private final MarkerMapper markerMapper;
 
     public MarkerResponseDto addMarker(@Valid MarkerRequestDto markerRequestDto) {
+        var doesExist = markerRepository.existsByName(markerRequestDto.name());
+        if (doesExist) {
+            throw new BusinessRuleException(ErrorMessages.markerAlreadyExists);
+        }
+
         var marker = markerMapper.toEntity(markerRequestDto);
         marker = markerRepository.save(marker);
         return markerMapper.toDto(marker);
@@ -33,9 +39,8 @@ public class MarkerService {
     }
 
     public MarkerResponseDto getById(@Min(1) @Max(Long.MAX_VALUE) Long markerId) {
-        var marker = markerRepository.findById(markerId).orElseThrow(
-                () -> new EntityNotFoundException(ErrorMessages.markerNotFound)
-        );
+        var marker = markerRepository.findById(markerId).orElseThrow(() ->
+                new EntityNotFoundException(ErrorMessages.markerNotFound));
         return markerMapper.toDto(marker);
     }
 
@@ -57,8 +62,8 @@ public class MarkerService {
 
     public void deleteById(@Min(1) @Max(Long.MAX_VALUE) Long markerId) {
         var doesExist = markerRepository.existsById(markerId);
-        if (doesExist) {
-            throw new EntityNotFoundException("");
+        if (!doesExist) {
+            throw new EntityNotFoundException(ErrorMessages.markerNotFound);
         }
 
         markerRepository.deleteById(markerId);

@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   publicator-service:
-    image: .
     build:
       context: .
       dockerfile: Dockerfile
@@ -31,18 +30,31 @@ services:
   cassandra-discussion-1:
     image: cassandra:latest
     environment:
-        - CASSANDRA_SEEDS=cassandra-discussion-1,
+        - CASSANDRA_SEEDS=cassandra-discussion-1 #,cassandra-discussion-2,cassandra-discussion-3
         - CASSANDRA_CLUSTER_NAME=discussions
         - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
         - CASSANDRA_USER=cassandra
         - CASSANDRA_PASSWORD_SEEDER=yes
         - CASSANDRA_PASSWORD=cassandra
-
     ports:
       - "9042:9042"
 
-#  cassandra-discussion-db-2:
+#  cassandra-discussion-2:
 #    image: cassandra:latest
+#    environment:
+#      - CASSANDRA_SEEDS=cassandra-discussion-1,cassandra-discussion-2,cassandra-discussion-3
+#      - CASSANDRA_CLUSTER_NAME=discussions
+#      - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
+#      - CASSANDRA_USER=cassandra
+#      - CASSANDRA_PASSWORD_SEEDER=yes
+#      - CASSANDRA_PASSWORD=cassandra
 #
-#  cassandra-discussion-db-3:
+#  cassandra-discussion-3:
 #    image: cassandra:latest
+#    environment:
+#      - CASSANDRA_SEEDS=cassandra-discussion-1,cassandra-discussion-2,cassandra-discussion-3
+#      - CASSANDRA_CLUSTER_NAME=discussions
+#      - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
+#      - CASSANDRA_USER=cassandra
+#      - CASSANDRA_PASSWORD_SEEDER=yes
+#      - CASSANDRA_PASSWORD=cassandra
